@@ -20,4 +20,4 @@ jobs:
       AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
       PAT_GIT_GITOPS: ${{ secrets.PAT_GIT_GITOPS }}
 
-#trigger1
+#trigger2
