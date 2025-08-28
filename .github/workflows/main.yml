@@ -8,7 +8,6 @@ jobs:
   build-and-deploy:
     uses: LuanCristopher/github-ci-templates/.github/workflows/build-and-push-template.yml@main
     with:
-      image-name: "ilia-desafio-api"
       gitops-repo: "https://github.com/LuanCristopher/helm-charts-ilia.git"
       gitops-branch: "main"
       gitops-values-path: "api/values.yaml"
