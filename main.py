@@ -1,0 +1,13 @@
+from flask import Flask
+import os
+
+app = Flask(__name__)
+
+@app.route('/')
+def hello():
+    # Uma mensagem para confirmar que a API está no ar
+    return "Olá, Ilia! Meu microserviço Python está rodando no EKS!"
+
+if __name__ == "__main__":
+    port = int(os.environ.get("PORT", 8080))
+    app.run(debug=True, host='0.0.0.0', port=port)
