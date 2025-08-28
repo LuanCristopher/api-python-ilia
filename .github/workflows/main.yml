@@ -6,11 +6,14 @@ on:
 
 jobs:
   call-build-and-deploy-template:
-    # Aponta para o nosso template reutilizável que já funciona
+    # Aponta para o nosso template reutilizável
     uses: LuanCristopher/github-ci-templates/.github/workflows/build-and-push-template.yml@main
     with:
-      # Define um nome para a imagem Docker que será criada
+      # O nome da imagem Docker
       image-name: 'ilia-desafio-api'
+      # CORREÇÃO: Adicionando os parâmetros que faltavam
+      repo-path: '.'
+      tag: ${{ github.sha }}
     secrets:
       # Passa os segredos necessários para o template
       DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
