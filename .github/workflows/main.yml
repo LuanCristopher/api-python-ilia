@@ -11,9 +11,12 @@ jobs:
     with:
       # O nome da imagem Docker
       image-name: 'ilia-desafio-api'
-      # CORREÇÃO: Adicionando os parâmetros que faltavam
-      repo-path: '.'
+      # O caminho para o Dockerfile (a raiz do projeto)
+      repo-path: '.' 
+      # A tag da imagem (o hash do commit)
       tag: ${{ github.sha }}
+      # CORREÇÃO: Adicionando o parâmetro que faltava
+      language: 'python'
     secrets:
       # Passa os segredos necessários para o template
       DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
