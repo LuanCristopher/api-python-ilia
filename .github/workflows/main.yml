@@ -1,24 +1,21 @@
-name: CI/CD para a API Python do Desafio
+name: CI/CD - API Python (ECR + GitOps)
 
 on:
   push:
-    branches: ["main"]
+    branches: [ "main" ]
 
 jobs:
-  call-build-and-deploy-template:
-    # Aponta para o nosso template reutilizável
+  build-and-deploy:
     uses: LuanCristopher/github-ci-templates/.github/workflows/build-and-push-template.yml@main
     with:
-      # O nome da imagem Docker
-      image-name: 'ilia-desafio-api'
-      # O caminho para o Dockerfile (a raiz do projeto)
-      repo-path: '.' 
-      # A tag da imagem (o hash do commit)
-      tag: ${{ github.sha }}
-      # CORREÇÃO: Adicionando o parâmetro que faltava
-      language: 'python'
+      image-name: "ilia-desafio-api"
+      gitops-repo: "https://github.com/LuanCristopher/helm-charts-ilia.git"
+      gitops-branch: "main"
+      gitops-values-path: "api/values.yaml"
+      gitops-image-repo-key: ".image.repository"
+      gitops-image-tag-key: ".image.tag"
     secrets:
-      # Passa os segredos necessários para o template
-      DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
-      DOCKERHUB_TOKEN: ${{ secrets.DOCKERHUB_TOKEN }}
+      AWS_REGION: ${{ secrets.AWS_REGION }}
+      AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+      AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
       PAT_GIT_GITOPS: ${{ secrets.PAT_GIT_GITOPS }}
