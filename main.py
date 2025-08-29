@@ -28,4 +28,4 @@ if __name__ == "__main__":
     os.environ["PYTHONUNBUFFERED"] = "1"
     # Flask dev server é suficiente para o desafio (1 worker). Em produção, use gunicorn.
     app.run(host="0.0.0.0", port=port, debug=False)
-    #trigger
+    #trigger1
